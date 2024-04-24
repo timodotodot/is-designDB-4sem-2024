@@ -1,0 +1,7 @@
+CREATE ROLE "admin" WITH LOGIN PASSWORD '1703';
+GRANT USAGE ON SCHEMA "public" TO "admin";
+GRANT SELECT ON ALL TABLES IN SCHEMA "public" TO "admin";
+CREATE EXTENSION IF NOT EXISTS anon CASCADE;
+
+SELECT anon.start_dynamic_masking();
+SECURITY LABEL FOR anon ON ROLE "admin" is 'MASKED';

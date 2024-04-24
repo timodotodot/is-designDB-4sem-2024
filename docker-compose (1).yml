@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  PostgreSQL:
+    image: registry.gitlab.com/dalibo/postgresql_anonymizer
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - PGUSER=postgres
+    command: >
+      postgres  -c shared_preload_libraries='anon'
